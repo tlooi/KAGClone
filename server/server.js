@@ -36,4 +36,4 @@ wss.on("connection", (ws) => {
 setInterval(() => {
     G.update();
     G.sendPlayerData();
-}, 1000/120);
+}, 1000/60);
