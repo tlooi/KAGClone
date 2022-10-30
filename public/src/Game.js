@@ -58,11 +58,13 @@ export class Game {
                         // console.log(this.lightMap[this.mouse.gy][this.mouse.gx]);
                         // this.receiveCommands[2](new Uint8Array([2, this.mouse.gx, this.mouse.gy, 0, 0, 0, 0, 0]))
                         // this.receiveCommands[2](new Uint8Array([2, this.mouse.gx, this.mouse.gy, 0, 1, 4, 0, 0]))
-                        const data = new Data(8);
-                        data.setUInt8(0, 1);
-                        data.setUInt16(1, this.mouse.gx, this.mouse.gy);
-                        data.setUInt8(6, 1);
-                        this.connection.ws.send(data.uint8);
+                        if (down) {
+                            const data = new Data(8);
+                            data.setUInt8(0, 1);
+                            data.setUInt16(1, this.mouse.gx, this.mouse.gy);
+                            data.setUInt8(6, 1);
+                            this.connection.ws.send(data.uint8);
+                        }
                         // this.connection.ws.send(new Uint8Array([1, this.mouse.gx, this.mouse.gy, 0]));
                         
                         break;
